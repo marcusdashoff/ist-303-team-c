@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Woooow you've Logged In!</title>
+</head>
+<body>
+    <h2>Yooooooo~~ {{ user.email }}!</h2>
+    <form action="{{ url_for('logout') }}" method="POST">
+        <button type="submit">Logout</button>
+    </form>
+</body>
+</html>
