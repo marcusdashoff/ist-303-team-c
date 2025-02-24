@@ -53,10 +53,8 @@ def login():
         user = conn.execute('SELECT * FROM users WHERE email = ?', (request.form['username'],)).fetchone()
         if user and user['password'] == request.form['password']: # todo: encrypt passwords
             login_user(User(user))
-            #flash("Logged in successfully!", "success")
             return redirect(url_for('index'))
         else:
-            #flash("Well we cannot find ya!", "danger")
             error = "Invalid credentials"
     return render_template('login.html', error=error)
 
@@ -64,5 +62,4 @@ def login():
 def logout():
     if current_user and current_user.is_authenticated:
         logout_user()
-        flash("Logged out successfully!", "success")
         return redirect(url_for('login'))
