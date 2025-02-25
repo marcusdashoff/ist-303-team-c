@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Woooow you've Logged In!</title>
-</head>
-<body>
-    <h2>Yooooooo~~ {{ user.email }}!</h2>
-    <form action="{{ url_for('logout') }}" method="POST">
-        <button type="submit">Logout</button>
-    </form>
-</body>
-</html>
+{% extends 'navigation.html' %}
+
+{% block content %}
+<h2>Yooooooo~~ U made it~ {{ user.email }}!</h2>
+{% endblock %}
