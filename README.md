@@ -28,6 +28,10 @@ Additional features include:
 
 # Project Plan  
 
+## Milestone 1
+Story 1 + Story 2 + Story 3
+
+
 ## 1. Project Kickoff (Basics V.1) - Chen  
 - **User DB Table Setup**  
   - `user (id, email, balance, password)`  
