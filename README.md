@@ -26,57 +26,103 @@ Additional features include:
 - Currency conversion
 - Tracking market opening and closing times for various global markets
 
-## Project Stakeholders
+# Project Plan  
 
-- **Development Team**: Responsible for designing, developing, and testing the application.
-- **Users (Investors/Traders)**: Individuals using the app to trade stocks and monitor market trends.
+## 1. Project Kickoff (Basics V.1) - Chen  
+- **User DB Table Setup**  
+  - `user (id, email, balance, password)`  
+- **Stock Trade DB Table Design and Setup**  
+  - Stock Schema: `stock (id, ticker, full_name)`  
+  - Purchase & Sell Schema:  
+    - `purchase (id, user_id, stock_id, price, datetime, fulfilled_by_id, is_canceled)`  
+    - `sell (id, user_id, stock_id, price, datetime, fulfilled_by_id, is_canceled)`  
+- **User Authentication**  
+  - User login with session setting  
+  - User logout with session unsetting  
+- **Navigation Setup**  
+  - Page tabs: **Main, Sell, Buy, Info**  
 
-## Initial User Stories and Time Estimates
+## 2. Stock Search and Display (Basics V.1) - Marcus  
+- **Info Page Features**  
+  - Search box with submit button (user enters ticker and clicks submit)  
+  - Stock info page (using stock ID as parameter)  
+    - DB query search  
+    - Show last price  
+    - Show highest historical price  
+    - Show lowest historical price  
+    - Trade volume within the past 24 hours  
+    - *(More details to be added in later iterations)*  
+  - Refresh button *(low priority)*  
 
-### Stock Search and Display (12-16 hours)
-**User Story**: As a user, I want to enter a stock ticker symbol in a search bar so that I can view its real-time price, percentage change, and trend.
+## 3. Buy Order (Basics V.1.5~2.0) - James  
+- **Purchase Page Features**  
+  - Input fields: stock symbol, shares, price  
+  - Submit button  
+  - Database call: Create multiple purchase entries & insert into DB  
+  - *(Fulfillment logic will be added later)*  
+- **Cancel Purchase Order**  
+  - Display unfulfilled purchase orders with a `Cancel` button  
+  - Clicking `Cancel` removes the entry from the `purchase` table  
 
-**Acceptance Criteria**:
-- The user enters a valid stock ticker.
-- The app fetches and displays the current stock price, daily high/low, percentage change, and volume.
-- Stock data updates in real-time or via a refresh button.
+## 4. Sell Order (Basics V.1.5~2.0) - James  
+- **Sell Page Features**  
+  - Input fields: stock symbol, shares, price  
+  - Submit button  
+  - Database call: Create multiple sell entries & insert into DB  
+  - *(Fulfillment logic will be added later)*  
+- **Cancel Sell Order**  
+  - Display unfulfilled sell orders with a `Cancel` button  
+  - Clicking `Cancel` removes the entry from the `sell` table  
 
-### Stock Graph and Market News (10-14 hours)
-**User Story**: As a user, I want to see stock trend graphs and related news articles so that I can make informed investment decisions.
+## 5. Order Fulfillment Logic (Basics V.3)  
+- **User Stock DB Table Setup**  
+  - `user_stock (user_id, stock_id, shares)`  
+- **Order Processing**  
+  - When a purchase/sell order is created, perform:  
+    - Order search & fulfillment  
+    - `Upsert` user stock shares count  
 
-**Acceptance Criteria**:
-- The app provides a graphical representation of stock trends (intraday, weekly, monthly views).
-- News articles related to the stock are displayed.
+## 6. Order History and Portfolio Performance (Basics V.3) - Marcus  
+- **Main Page Features**  
+  - List of past fulfilled transactions  
+  - Display user’s current balance  
+  - Display user’s current stock holdings  
 
-### Buy and Sell Orders (15-20 hours)
-**User Story**: As a user, I want to place buy and sell orders for stocks so that I can invest in the market.
+## 7. User Portfolio Performance Trend *(Low Priority - Future Iterations)*  
+- Algorithm to calculate daily performance per stock  
+- Use user’s stock holdings to calculate total performance  
 
-**Acceptance Criteria**:
-- Users can input order details (stock, quantity, price type).
-- The app processes the order and updates the user’s portfolio.
+## 8. Stock Graph and Market News *(Low Priority - Future Iterations)*  
+- **Stock Graph**  
+- **Market News** *(Pending decision on external API usage)*  
+- Add to the Main Page  
 
-### Order History and Portfolio Performance (12-16 hours)
-**User Story**: As a user, I want to see my transaction history and portfolio performance so that I can track my investments.
+## 9. Currency Conversion *(Low Priority - Future Iterations)*  
+- If an external API is needed, defer until after core functionalities are completed  
 
-**Acceptance Criteria**:
-- The app displays a list of past transactions.
-- The portfolio section updates with current holdings and overall performance.
+## 10. Market Open/Close Times *(Low Priority - Future Iterations)*  
+- If an external API is needed, defer until after core functionalities are completed  
 
-### Cancel Unfulfilled Orders (8-12 hours)
-**User Story**: As a user, I want to cancel unfulfilled orders so that I can modify my trading strategy.
+---
 
-**Acceptance Criteria**:
-- Users can view and cancel pending buy/sell orders.
-- The system updates order status accordingly.
+## Additional Tasks  
 
-### Currency Conversion (6-10 hours)
-**User Story**: As a user, I want to convert stock prices between different currencies so that I can understand their value.
+### 1. Burndown Chart  
+- Track team progress  
+- [Burndown Chart Link](https://cgu0-my.sharepoint.com/:x:/g/personal/marcus_dashoff_cgu_edu/EcCni_jThsBJvpLt8faw6WsBARXbuQ9OJch2m55Aj7UJOA?e=T1mGGv)  
+- Reference: *Head First Software Development* by Pilone & Miles (p. 104)  
 
-**Acceptance Criteria**:
-- The app includes a currency converter feature with real-time exchange rates.
+### 2. Stand-Up Meeting Evidence (GitHub Documentation)  
+#### 2/14/25 @ 7:30 on Zoom  
+- Parsed out stories  
+- Partially filled out burndown chart  
+- Set next meeting time/date  
 
-### Market Open/Close Times (4-6 hours)
-**User Story**: As a user, I want to see market opening and closing times for different stock exchanges so that I can trade effectively.
+#### 2/19/25 @ 6:30 @ CGU  
+- Reviewed and assigned more stories  
+- Set next meeting time/date  
 
-**Acceptance Criteria**:
-- The app displays trading hours for major global stock exchanges.
+#### 2/23/25 @ 7:30 on Teams  
+- Broke down stories into tasks  
+- Created burndown chart  
+- Assigned members tasks and deliverables  
