@@ -101,7 +101,7 @@ Story 1 + Story 2 + Story 3
 - **Market News** *(Pending decision on external API usage)*  
 - Add to the Main Page  
 
-## 9. Currency Conversion *(Low Priority - Future Iterations)*  - Ramond
+## 9. Currency Conversion *(Low Priority - Future Iterations)*  - Raymond
 - If an external API is needed, defer until after core functionalities are completed  
 
 ## 10. Market Open/Close Times *(Low Priority - Future Iterations)*  - Marcus
