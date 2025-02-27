@@ -78,7 +78,7 @@ Story 1 + Story 2 + Story 3
   - Display unfulfilled sell orders with a `Cancel` button  
   - Clicking `Cancel` removes the entry from the `sell` table  
 
-## 5. Order Fulfillment Logic (Basics V.3)  
+## 5. Order Fulfillment Logic (Basics V.3) - Eman
 - **User Stock DB Table Setup**  
   - `user_stock (user_id, stock_id, shares)`  
 - **Order Processing**  
@@ -86,13 +86,13 @@ Story 1 + Story 2 + Story 3
     - Order search & fulfillment  
     - `Upsert` user stock shares count  
 
-## 6. Order History and Portfolio Performance (Basics V.3) - Marcus  
+## 6. Order History and Portfolio Performance (Basics V.3) - Eman
 - **Main Page Features**  
   - List of past fulfilled transactions  
   - Display user’s current balance  
   - Display user’s current stock holdings  
 
-## 7. User Portfolio Performance Trend *(Low Priority - Future Iterations)*  
+## 7. User Portfolio Performance Trend *(Low Priority - Future Iterations)*  - Raymond
 - Algorithm to calculate daily performance per stock  
 - Use user’s stock holdings to calculate total performance  
 
@@ -101,10 +101,10 @@ Story 1 + Story 2 + Story 3
 - **Market News** *(Pending decision on external API usage)*  
 - Add to the Main Page  
 
-## 9. Currency Conversion *(Low Priority - Future Iterations)*  
+## 9. Currency Conversion *(Low Priority - Future Iterations)*  - Ramond
 - If an external API is needed, defer until after core functionalities are completed  
 
-## 10. Market Open/Close Times *(Low Priority - Future Iterations)*  
+## 10. Market Open/Close Times *(Low Priority - Future Iterations)*  - Marcus
 - If an external API is needed, defer until after core functionalities are completed  
 
 ---
