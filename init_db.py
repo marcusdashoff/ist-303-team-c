@@ -23,6 +23,20 @@ cur.execute("INSERT INTO stocks (ticker, full_name) VALUES (?, ?)",
             ('GOOGL', 'Alphabet Inc.'))
 cur.execute("INSERT INTO stocks (ticker, full_name) VALUES (?, ?)", 
             ('TSLA', 'Tesla Inc.'))
+cur.execute("INSERT INTO stocks (ticker, full_name) VALUES (?, ?)", 
+            ('NDAQ', 'Nasdaq Inc.'))            
+cur.execute("INSERT INTO stocks (ticker, full_name) VALUES (?, ?)", 
+            ('MSFT', 'Microsoft Corp.'))
+cur.execute("INSERT INTO stocks (ticker, full_name) VALUES (?, ?)", 
+            ('META', 'Meta Plaforms, Inc.'))
+cur.execute("INSERT INTO stocks (ticker, full_name) VALUES (?, ?)", 
+            ('AVGO', 'Broadcom Inc.'))
+cur.execute("INSERT INTO stocks (ticker, full_name) VALUES (?, ?)", 
+            ('V', 'Visa Inc.'))
+cur.execute("INSERT INTO stocks (ticker, full_name) VALUES (?, ?)", 
+            ('COST', 'Costco Wholesale Corp.'))
+
+
 
 # Insert Purchases
 cur.execute("INSERT INTO purchases (user_id, stock_id, price, datetime, fullfilled_by_id, is_canceled) VALUES (?, ?, ?, ?, ?, ?)", 
