@@ -1,4 +1,3 @@
-import sqlite3
 from flask import Flask, render_template, redirect, url_for, request, abort, flash
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from models.user import User
@@ -7,12 +6,6 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'abcdefghijklmnop'
 login_manager = LoginManager()
 login_manager.init_app(app)
-
-
-def get_db_connection():
-    conn = sqlite3.connect('database.db')
-    conn.row_factory = sqlite3.Row
-    return conn
 
 @login_manager.user_loader
 def load_user(user_id):
