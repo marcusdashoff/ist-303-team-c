@@ -1,29 +1,12 @@
 import sqlite3
 from flask import Flask, render_template, redirect, url_for, request, abort, flash
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
-
+from models.user import User
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'abcdefghijklmnop'
 login_manager = LoginManager()
 login_manager.init_app(app)
-
-# TODO: move it to model file!!!!!
-class User:
-    def __init__(self, user_from_db):
-        self.id = user_from_db['id']
-        self.email = user_from_db['email']
-        self.password = user_from_db['password']
-        self.balance = user_from_db['balance']
-        if user_from_db['id']:
-            self.is_authenticated = True
-        else: 
-            self.is_authenticated = False
-        self.is_active = True
-        self.is_anonymous = False
-        
-    def get_id(self):
-        return str(self.id)
 
 
 def get_db_connection():
