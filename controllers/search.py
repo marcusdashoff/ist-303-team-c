@@ -7,7 +7,7 @@ search_controller = Blueprint('search', __name__)
 @search_controller.route('/search', methods=['GET', 'POST'])
 def search():
     if not (current_user and current_user.is_authenticated):
-        return redirect(url_for('auth.login'))
+        return redirect(url_for('login'))
 
     if request.method == 'POST':
         ticker = request.form['ticker']
