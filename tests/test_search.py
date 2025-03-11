@@ -1,6 +1,9 @@
 import pytest
 import sys
-sys.path.insert(0, '/Users/stone/src/ist-303-team-c')
+import os
+#sys.path.insert(0, '/Users/stone/src/ist-303-team-c')
+# wasted me an hr on this... i had no freaking clue...
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from main import app
 
 
