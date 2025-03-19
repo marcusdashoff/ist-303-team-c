@@ -6,39 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>{% block title %} {% endblock %}</title>
+    <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
     <div class="card text-center">
         <div class="card-header">
-          <ul class="nav nav-pills card-header-pills">
-            <li class="nav-item">
-              <a class="nav-link active" href="{{ url_for('index') }}">HO'DL</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{url_for('search.search')}}">Search</a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link disabled" href="#">Purchases</a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link disabled" href="#">Sells</a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="{{url_for('logout')}}">Log Out</a>
-            </li>
-          </ul>
+            <ul class="nav nav-pills card-header-pills">
+                <li class="nav-item">
+                    <a class="nav-link active" href="{{ url_for('index') }}">HO'DL</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('search.search') }}">Search</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('purchase.purchase') }}">Purchases</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Sells</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('logout') }}">Log Out</a>
+                </li>
+            </ul>
         </div>
         <div class="container">
-            {% for message in get_flashed_messages() %}
-                <div class="alert alert-danger">{{ message }}</div>
-            {% endfor %}
-            {% block content %} {% endblock %}
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            {% block content %}{% endblock %}
         </div>
-      </div>
+    </div>
 </body>
 </html>
-
-
-
-
