@@ -4,8 +4,8 @@
 <h2>Yoooo, search stock here</h2>
 <br><br>
 <form method="post">
-    <div class="form-group">
-        <label for="ticker">Stock Ticker</label>
+    <div class="form-group d-flex align-items-center gap-2">
+        <label for="ticker" class="mr-2 text-nowrap" style="width: 120px;"><b>Stock Ticker</b></label>
         <input type="text" name="ticker"
                placeholder="GOOGL" class="form-control"
                value="{{ request.form['ticker'] }}"></input>
