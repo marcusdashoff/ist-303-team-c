@@ -2,6 +2,7 @@ from flask import Flask, render_template, redirect, url_for, request, abort, fla
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from models.user import User
 from controllers.search import search_controller
+from controllers.purchase import purchase_controller
 from helper.db_connector import get_db_connection
 
 app = Flask(__name__)
@@ -9,6 +10,7 @@ app.config['SECRET_KEY'] = 'abcdefghijklmnop'
 login_manager = LoginManager()
 login_manager.init_app(app)
 app.register_blueprint(search_controller)
+app.register_blueprint(purchase_controller)
 
 @login_manager.user_loader
 def load_user(user_id):

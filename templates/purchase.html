@@ -1,0 +1,80 @@
+{% extends 'navigation.html' %}
+
+{% block content %}
+    <h2>Purchase Stock</h2>
+    <br>
+    <b>Current Balance:</b> <span class="badge badge-success">${{ user.balance }}</span>
+    <br><br>
+    <form method="POST">
+        <div class="form-group d-flex align-items-center gap-2">
+            <label for="ticker" class="mr-2 text-nowrap" style="width: 120px;">Stock Ticker</label>
+            <select class="form-control" id="ticker" name="ticker" required>
+                <option value="" disabled selected>Select a ticker</option>
+                {% for ticker, full_name in tickers %}
+                    <option value="{{ ticker }}">{{ ticker }} - {{ full_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group d-flex align-items-center gap-2">
+            <label for="shares" class="mr-2 text-nowrap" style="width: 120px;"># of Shares</label>
+            <input 
+                type="number" 
+                class="form-control" 
+                id="shares" 
+                name="shares" 
+                min="1" 
+                required
+            >
+        </div>
+
+        <div class="form-group d-flex align-items-center gap-2">
+            <label for="price" class="mr-2 text-nowrap" style="width: 120px;">$ per Share</label>
+            <input 
+                type="number" 
+                class="form-control" 
+                id="price" 
+                name="price" 
+                step="0.01" 
+                required
+            >
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit Purchase Order</button>
+    </form>
+
+    <br><br>
+    {% if user_pending_purchases %}
+        <h2 class="mt-4">Your Pending Purchases</h2>
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+                    <th>Ticker</th>
+                    <th>Full Name</th>
+                    <th>Price</th>
+                    <th>Shares</th>
+                    <th>Purchase Placement Date Time</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for purchase in user_pending_purchases %}
+                    <tr>
+                        <td>{{ purchase.ticker }}</td>
+                        <td>{{ purchase.full_name }}</td>
+                        <td>${{ purchase.price }}</td>
+                        <td>1</td>
+                        <td>{{ purchase.datetime }}</td>
+                        <td>
+                            <form method="POST" action="{{ url_for('purchase.purchase_cancel', purchase_id=purchase.id) }}" style="display:inline;">
+                                <button type="submit" class="btn btn-danger btn-sm">
+                                    <i class="fas fa-trash-alt"></i> CANCEL THIS
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}
