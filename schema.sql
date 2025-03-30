@@ -27,6 +27,17 @@ CREATE TABLE purchases (
     FOREIGN KEY (fullfilled_by_id) REFERENCES users(id) ON DELETE SET NULL
 );
 
+DROP TABLE IF EXISTS currency;
+CREATE TABLE currency (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    currency_id INTEGER NOT NULL,
+    currency_name TEXT UNIQUE NOT NULL,
+    conversion_rate REAL NOT NULL,
+    converted_price REAL NOT NULL,
+    datetime DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+
 DROP TABLE IF EXISTS sells;
 CREATE TABLE sells (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
