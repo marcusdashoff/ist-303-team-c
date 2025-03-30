@@ -33,7 +33,6 @@ CREATE TABLE currency (
     currency_id INTEGER NOT NULL,
     currency_name TEXT UNIQUE NOT NULL,
     conversion_rate REAL NOT NULL,
-    converted_price REAL NOT NULL,
     datetime DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
