@@ -54,5 +54,27 @@ cur.execute("INSERT INTO sells (user_id, stock_id, price, datetime, fullfilled_b
 cur.execute("INSERT INTO sells (user_id, stock_id, price, datetime, fullfilled_by_id, is_canceled) VALUES (?, ?, ?, ?, ?, ?)", 
             (3, 1, 150.30, '2024-02-23 15:00:00', 2, 1))
 
+# Insert Currency
+cur.execute("INSERT INTO currency (currency_name, currency_name, conversion_rate, converted_price) VALUES (?, ?, ?)", 
+            ('US Dollar', 'USD', 1.0))
+cur.execute("INSERT INTO currency (currency_name, currency_name, conversion_rate, converted_price) VALUES (?, ?, ?)", 
+            ('Euro', 'EUR', 0.85))
+cur.execute("INSERT INTO currency (currency_name, currency_name, conversion_rate, converted_price) VALUES (?, ?, ?)", 
+            ('British Pound', 'GBP', 0.75))
+cur.execute("INSERT INTO currency (currency_name, currency_name, conversion_rate, converted_price) VALUES (?, ?, ?)", 
+            ('Japanese Yen', 'JPY', 110.0))
+cur.execute("INSERT INTO currency (currency_name, currency_name, conversion_rate, converted_price) VALUES (?, ?, ?)", 
+            ('Canadian Dollar', 'CAD', 1.25))
+cur.execute("INSERT INTO currency (currency_name, currency_name, conversion_rate, converted_price) VALUES (?, ?, ?)",
+            ('Australian Dollar', 'AUD', 1.35))
+cur.execute("INSERT INTO currency (currency_name, currency_name, conversion_rate, converted_price) VALUES (?, ?, ?)",
+            ('Swiss Franc', 'CHF', 0.92))
+cur.execute("INSERT INTO currency (currency_name, currency_name, conversion_rate, converted_price) VALUES (?, ?, ?)",
+            ('Chinese Yuan', 'CNY', 6.5))
+cur.execute("INSERT INTO currency (currency_name, currency_name, conversion_rate, converted_price) VALUES (?, ?, ?)",
+            ('Indian Rupee', 'INR', 74.0))
+cur.execute("INSERT INTO currency (currency_name, currency_name, conversion_rate, converted_price) VALUES (?, ?, ?)",
+            ('Singapore Dollar', 'SGD', 1.35))
+
 connection.commit()
 connection.close()
