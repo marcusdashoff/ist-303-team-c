@@ -23,8 +23,7 @@ CREATE TABLE purchases (
     fullfilled_by_id INTEGER,
     is_canceled BOOLEAN DEFAULT 0,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-    FOREIGN KEY (stock_id) REFERENCES stocks(id) ON DELETE CASCADE,
-    FOREIGN KEY (fullfilled_by_id) REFERENCES users(id) ON DELETE SET NULL
+    FOREIGN KEY (stock_id) REFERENCES stocks(id) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS currency;
@@ -47,6 +46,15 @@ CREATE TABLE sells (
     fullfilled_by_id INTEGER,
     is_canceled BOOLEAN DEFAULT 0,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-    FOREIGN KEY (stock_id) REFERENCES stocks(id) ON DELETE CASCADE,
-    FOREIGN KEY (fullfilled_by_id) REFERENCES users(id) ON DELETE SET NULL
+    FOREIGN KEY (stock_id) REFERENCES stocks(id) ON DELETE CASCADE
+);
+
+DROP TABLE IF EXISTS user_stock;
+CREATE TABLE user_stock (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    stock_id INTEGER NOT NULL,
+    shares INTEGER NOT NULL DEFAULT 0,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (stock_id) REFERENCES stocks(id) ON DELETE CASCADE
 );

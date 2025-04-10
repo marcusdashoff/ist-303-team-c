@@ -55,6 +55,8 @@ cur.execute("INSERT INTO sells (user_id, stock_id, price, datetime, fullfilled_b
             (3, 1, 150.30, '2024-02-23 15:00:00', 2, 1))
 
 # Insert Currency
+"""
+# this whole block of insertion is failing. @Marcus you might want to fix it. 
 cur.execute("INSERT INTO currency (currency_name, currency_name, conversion_rate, converted_price) VALUES (?, ?, ?)", 
             ('US Dollar', 'USD', 1.0))
 cur.execute("INSERT INTO currency (currency_name, currency_name, conversion_rate, converted_price) VALUES (?, ?, ?)", 
@@ -75,6 +77,20 @@ cur.execute("INSERT INTO currency (currency_name, currency_name, conversion_rate
             ('Indian Rupee', 'INR', 74.0))
 cur.execute("INSERT INTO currency (currency_name, currency_name, conversion_rate, converted_price) VALUES (?, ?, ?)",
             ('Singapore Dollar', 'SGD', 1.35))
+"""
+
+cur.execute("INSERT INTO user_stock (user_id, stock_id, shares) VALUES (?, ?, ?)", 
+            (1, 1, 10)) 
+cur.execute("INSERT INTO user_stock (user_id, stock_id, shares) VALUES (?, ?, ?)", 
+            (1, 2, 58))   
+cur.execute("INSERT INTO user_stock (user_id, stock_id, shares) VALUES (?, ?, ?)", 
+            (2, 2, 85))   
+cur.execute("INSERT INTO user_stock (user_id, stock_id, shares) VALUES (?, ?, ?)", 
+            (2, 3, 30))   
+cur.execute("INSERT INTO user_stock (user_id, stock_id, shares) VALUES (?, ?, ?)", 
+            (3, 1, 67))   
+cur.execute("INSERT INTO user_stock (user_id, stock_id, shares) VALUES (?, ?, ?)", 
+            (3, 3, 4))   
 
 connection.commit()
 connection.close()

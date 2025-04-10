@@ -5,6 +5,8 @@ from controllers.search import search_controller
 from controllers.purchase import purchase_controller
 from controllers.sell import sell_controller
 from helper.db_connector import get_db_connection
+from apscheduler.schedulers.background import BackgroundScheduler
+from jobs.fulfillment import fulfill_order
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'abcdefghijklmnop'
@@ -13,6 +15,10 @@ login_manager.init_app(app)
 app.register_blueprint(search_controller)
 app.register_blueprint(purchase_controller)
 app.register_blueprint(sell_controller)
+
+scheduler = BackgroundScheduler()
+scheduler.add_job(func=fulfill_order, trigger="interval", seconds=15)
+scheduler.start()
 
 @login_manager.user_loader
 def load_user(user_id):
