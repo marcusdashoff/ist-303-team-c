@@ -73,4 +73,4 @@ def sell_cancel(sell_id):
 
     return redirect(url_for('sell.sell'))
     
-    
+
