@@ -1,6 +1,77 @@
 {% extends 'navigation.html' %}
 
 {% block content %}
-<h1>(Hold On, Don’t Liquidate)</h1>
-<h2>Yooooooo~~ U made it~ {{ user.email }}!</h2>
+<div class="container mt-4">
+
+    <div class="text-center mb-4">
+        <h1 class="display-5 fw-bold">(Hold On, Don’t Liquidate)</h1>
+        <h2 class="text-muted">Welcome, U made it~ <strong>{{ user.email }}</strong>!</h2>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h4 class="card-title">💰Account Balance💰</h4>
+            <p class="fs-4 text-success">${{ "%.2f"|format(user.balance) }}</p>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h4 class="card-title">📈Current Stock Holdings📈</h4>
+            {% if holdings %}
+                <ul class="list-group list-group-flush mt-3">
+                    {% for stock in holdings %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <b>{{ stock.ticker }}</b> — {{ stock.full_name }}
+                            </div>
+                            <span class="badge bg-primary">{{ stock.shares }} shares</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="text-muted mt-3">You currently hold no stocks.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h4 class="card-title">Past Fulfillment Ledgers</h4>
+            {% if transactions %}
+                <div class="table-responsive mt-3">
+                    <table class="table table-bordered table-hover align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th scope="col">Type</th>
+                                <th scope="col">Ticker</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for tx in transactions %}
+                                <tr>
+                                    <td>
+                                        {% if tx.type == "Buy" %}
+                                            <span class="badge bg-success">Buy</span>
+                                        {% else %}
+                                            <span class="badge bg-danger">Sell</span>
+                                        {% endif %}
+                                    </td>
+                                    <td><strong>{{ tx.ticker }}</strong></td>
+                                    <td>${{ "%.2f"|format(tx.price) }}</td>
+                                    <td>{{ tx.datetime }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <p class="text-muted mt-3">No transactions record found yet.</p>
+            {% endif %}
+        </div>
+    </div>
+
+</div>
 {% endblock %}

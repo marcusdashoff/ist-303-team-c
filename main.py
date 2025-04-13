@@ -29,9 +29,54 @@ def load_user(user_id):
 @app.route('/')
 #@login_required
 def index():
-    if current_user and current_user.is_authenticated:
-        return render_template('index.html', user=current_user)
-    return redirect(url_for('login'))
+    if not (current_user and current_user.is_authenticated):
+        return redirect(url_for('login'))
+    
+    conn = get_db_connection()
+
+    # refresh balance!
+    user = conn.execute('SELECT * FROM users WHERE id = ?', (current_user.id,)).fetchone()
+
+    holdings = conn.execute('''
+        SELECT us.shares, s.ticker, s.full_name
+        FROM user_stock us
+        JOIN stocks s ON s.id = us.stock_id
+        WHERE us.user_id = ?
+    ''', (current_user.id,)).fetchall()
+        
+    purchases = conn.execute('''
+        SELECT s.ticker, p.price, p.datetime
+        FROM purchases p
+        JOIN sells s2 ON p.fullfilled_by_id = s2.id
+        JOIN stocks s ON p.stock_id = s.id
+        WHERE p.user_id = ? AND p.fullfilled_by_id IS NOT NULL AND p.is_canceled = 0
+    ''', (current_user.id,)).fetchall()
+
+    sells = conn.execute('''
+        SELECT s.ticker, s2.price, s2.datetime
+        FROM sells s2
+        JOIN purchases p ON s2.fullfilled_by_id = p.id
+        JOIN stocks s ON s2.stock_id = s.id
+        WHERE s2.user_id = ? AND s2.fullfilled_by_id IS NOT NULL AND s2.is_canceled = 0
+    ''', (current_user.id,)).fetchall()
+
+    transactions = [
+        dict(type="Buy", ticker=row["ticker"], price=row["price"], datetime=row["datetime"])
+        for row in purchases
+    ] + [
+        dict(type="Sell", ticker=row["ticker"], price=row["price"], datetime=row["datetime"])
+        for row in sells
+    ]
+
+    # make sure its by date time descending
+    transactions.sort(key=lambda x: x["datetime"], reverse=True)
+
+    return render_template(
+        'index.html',
+        user=user,
+        holdings=holdings,
+        transactions=transactions
+    )
 
 # https://flask-login.readthedocs.io/en/latest/
 @app.route('/login', methods=['GET', 'POST'])
