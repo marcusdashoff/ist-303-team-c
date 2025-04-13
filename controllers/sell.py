@@ -12,16 +12,13 @@ def sell():
     
     conn = get_db_connection()
     
-    current_holdings = conn.execute(
-        '''
-        SELECT us.stock_id, us.shares, s.ticker, s.full_name
-        FROM user_stock us
-        JOIN stocks s ON us.stock_id = s.id
-        WHERE us.user_id = ? AND us.shares > 0
-        ''', 
-        (current_user.id,)
-    ).fetchall()
-
+    # TODO: add in user stocks table to indicate current holdings + read from that table instead!
+    current_holdings = [
+        SimpleNamespace(stock_id=1, shares=10, ticker="AAPL", full_name="Apple Inc."),
+        SimpleNamespace(stock_id=2, shares=10, ticker="GOOGL", full_name="Alphabet Inc."), 
+        SimpleNamespace(stock_id=5, shares=5, ticker="MSFT", full_name="Microsoft Corp.")
+    ]
+    
     if request.method == 'POST':
         stock_id = request.form.get('submit_stock')  
         shares = int(request.form.get('shares'))
@@ -32,11 +29,6 @@ def sell():
                 'INSERT INTO sells (user_id, stock_id, price) VALUES (?, ?, ?)',
                 (current_user.id, stock_id, price)
             )
-            
-        conn.execute(
-            'UPDATE user_stock SET shares = shares - ? WHERE user_id = ? AND stock_id = ?',
-            (shares, current_user.id, stock_id)
-        )
 
         conn.commit()
         flash('Your sell order has been placed!', 'success')
@@ -81,4 +73,4 @@ def sell_cancel(sell_id):
 
     return redirect(url_for('sell.sell'))
     
-    
+
