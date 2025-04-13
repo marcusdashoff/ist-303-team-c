@@ -1,1 +1,38 @@
+name: Run pytests
 
+on: # when to run
+  push:
+    branches: [main]
+  
+  pull_request:
+    branches: [main]
+
+jobs:
+
+  build: 
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        python-version: [3.9, 3.12]
+        os: [windows-latest, macos-latest]
+
+    steps:
+
+      # use @main br of checkout action instead of version (checkout@v4)
+      - name: checkout repository content
+        uses: actions/checkout@main 
+
+      # uses pre-existing action, details at https://github.com/actions/setup-python
+      - name: setup python
+        uses: actions/setup-python@main 
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: install dependencies
+        run: |  # indicates terminal commands
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt 
+
+      - name: test using pytest 
+        run: | 
+          pytest
