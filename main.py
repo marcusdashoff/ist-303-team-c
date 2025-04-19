@@ -1,3 +1,6 @@
+
+# This is the main python file for the stock trading app.
+# It contains the various modules that are used in the app.
 from flask import Flask, render_template, redirect, url_for, request, abort, flash
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from models.user import User
@@ -7,6 +10,7 @@ from controllers.sell import sell_controller
 from helper.db_connector import get_db_connection
 from apscheduler.schedulers.background import BackgroundScheduler
 from jobs.fulfillment import fulfill_order
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'abcdefghijklmnop'
@@ -26,6 +30,7 @@ def load_user(user_id):
     user = conn.execute('SELECT * FROM users WHERE id = ?', (user_id,)).fetchone()
     return User(user)
 
+# Verifies if the attempted login is from a valid user. Otherwise, redirects to login page.
 @app.route('/')
 #@login_required
 def index():
@@ -77,7 +82,7 @@ def index():
         holdings=holdings,
         transactions=transactions
     )
-
+# Ueses email and password to authenticate user. Currently, it does not encrypt passwords.
 # https://flask-login.readthedocs.io/en/latest/
 @app.route('/login', methods=['GET', 'POST'])
 def login():
