@@ -40,3 +40,27 @@ def test_index_displays_holdings_and_transactions(client):
     assert "AAPL" in html
     assert "GOOGL" in html
     assert "Sell" in html or "Buy" in html
+
+def test_login_get(client):
+    response = client.get('/login')
+    assert response.status_code == 200
+    assert "Login" in response.get_data(as_text=True)
+
+def test_login_post_success_then_log_out(client):
+    response = client.post('/login', data={'username': 'alice@example.com', 'password': 'hashed_password_1'}, follow_redirects=True)
+    assert response.status_code == 200
+    assert "Welcome, U made it~" in response.get_data(as_text=True)
+    
+    response = client.get('/logout', follow_redirects=True)
+    assert response.status_code == 200
+
+def test_login_post_failure(client):
+    response = client.post('/login', data={'username': 'alice@example.com', 'password': 'wrong_password'})
+    assert response.status_code == 200
+    assert "Invalid credentials" in response.get_data(as_text=True)
+
+def test_logout(client):
+    login_session(client)
+    response = client.get('/logout', follow_redirects=True)
+    assert response.status_code == 200
+    assert "Login" in response.get_data(as_text=True) or "Invalid credentials" in response.get_data(as_text=True)
