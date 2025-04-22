@@ -43,9 +43,9 @@ python init_db.py
 
 # run app
 flask --app main.py run --debug
+# then go to http://127.0.0.1:5000. You should be able to find login info in init_db.py seeding file. 
 
-# if you are receiving `unable to load module error`, you might neeed to reconfigure your python path, 
-# for example, by running `export PYTHONPATH=$PYTHONPATH:/Users/stone/src/ist-303-team-c` 
+🚨 🚨 if you are receiving `unable to load module error`, you might neeed to reconfigure your python path, for example, by running `export PYTHONPATH=$PYTHONPATH:/Users/stone/src/ist-303-team-c` 
 
 # run pytest
 pytest
