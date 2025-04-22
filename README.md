@@ -26,6 +26,35 @@ Additional features include:
 - Currency conversion
 - Tracking market opening and closing times for various global markets
 
+# How to Run
+
+```
+# init virtual env
+python3 -m venv venv
+
+# run vierutal env
+source venv/bin/activate
+
+# install dependencies
+pip install -r requirements.txt 
+
+# initialize database
+python init_db.py
+
+# run app
+flask --app main.py run --debug
+
+# if you are receiving `unable to load module error`, you might neeed to reconfigure your python path, 
+# for example, by running `export PYTHONPATH=$PYTHONPATH:/Users/stone/src/ist-303-team-c` 
+
+# run pytest
+pytest
+
+# run test coverage
+pytest --cov=controllers --cov=main --cov=models --cov=jobs --cov-report=term-missing
+```
+
+
 # Project Plan  
 
 ## Milestone 1
