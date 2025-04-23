@@ -274,4 +274,31 @@ Story 4 + Story 5 + Story 6
 #### 2/23/25 @ 7:30 on Teams  
 - Broke down stories into tasks  
 - Created burndown chart  
-- Assigned members tasks and deliverables  
+- Assigned members tasks and deliverables
+
+#### 3/26/25 @ 6:00 in person
+
+- Reviewed pytest in class
+
+#### 3/30/25 @ 7:00 on Teams
+
+- Reviewed stories
+- Reviewed end of prior iteration
+- Played Planning Poker
+
+#### 4/9/25 @ 7:00 on Teams
+
+- Reviewed Story 4
+
+#### 4/13/25 @ 7:00 on Teams
+
+- Reviewed story 5
+
+
+#### 2/20/25 @ 7:00 on Teams
+
+- Reviewed Story 6
+
+#### 2/22/25 @ 7:30 on Teams
+
+- Reviewed Presentation
