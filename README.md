@@ -55,13 +55,13 @@ pytest --cov=controllers --cov=main --cov=models --cov=jobs --cov-report=term-mi
 ```
 
 # Lessons Leaned From This Project 
-* **Be Ready for Surprises**: Some things took longer than we 
+* ✅ **Be Ready for Surprises**: Some things took longer than we 
 thought like using outside tools or APIs. It’s important to 
 leave extra time in case things don’t go as planned.
-* **Keep Code Organized**: Writing clean, separate pieces of 
+* ✅ **Keep Code Organized**: Writing clean, separate pieces of 
 code made it easier to test, fix problems, and add new 
 features later.
-* **Communicate Early and Often**: Checking in regularly as 
+* ✅ **Communicate Early and Often**: Checking in regularly as 
 a team helped us stay on the same page, solve
 problems quickly, and adjust our plan when needed.
 
