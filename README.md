@@ -54,6 +54,101 @@ pytest
 pytest --cov=controllers --cov=main --cov=models --cov=jobs --cov-report=term-missing
 ```
 
+# Lessons Leaned From This Project 
+* **Be Ready for Surprises**: Some things took longer than we 
+thought like using outside tools or APIs. It’s important to 
+leave extra time in case things don’t go as planned.
+* **Keep Code Organized**: Writing clean, separate pieces of 
+code made it easier to test, fix problems, and add new 
+features later.
+* **Communicate Early and Often**: Checking in regularly as 
+a team helped us stay on the same page, solve
+problems quickly, and adjust our plan when needed.
+
+
+# Project Repo Info
+## Commit History
+- [main branch commit history](https://github.com/marcusdashoff/ist-303-team-c/commits/main/)
+## Contributors
+- [contributors page](https://github.com/marcusdashoff/ist-303-team-c/graphs/contributors)
+## Overall usage of github
+- [Github Actions](https://github.com/marcusdashoff/ist-303-team-c/actions)
+- [Github Issue](https://github.com/marcusdashoff/ist-303-team-c/issues)
+- [Github Pull Requests](https://github.com/marcusdashoff/ist-303-team-c/pulls)
+
+## Directory Structure
+```
+.
+├── Part C
+│   └── Part C Presentation.pptx
+├── README.md
+├── __init__.py
+├── __pycache__
+│   ├── __init__.cpython-313.pyc
+│   └── main.cpython-313.pyc
+├── controllers
+│   ├── __init__.py
+│   ├── __pycache__
+│   │   ├── __init__.cpython-313.pyc
+│   │   ├── auth.cpython-313.pyc
+│   │   ├── purchase.cpython-313.pyc
+│   │   ├── search.cpython-313.pyc
+│   │   └── sell.cpython-313.pyc
+│   ├── purchase.py
+│   ├── search.py
+│   └── sell.py
+├── database.db
+├── helper
+│   ├── CurrencyConversion.py
+│   ├── __init__.py
+│   ├── __pycache__
+│   │   ├── __init__.cpython-313.pyc
+│   │   └── db_connector.cpython-313.pyc
+│   └── db_connector.py
+├── init_db.py
+├── jobs
+│   ├── __pycache__
+│   │   └── fulfillment.cpython-313.pyc
+│   └── fulfillment.py
+├── main.py
+├── models
+│   ├── __init__.py
+│   ├── __pycache__
+│   │   ├── __init__.cpython-313.pyc
+│   │   └── user.cpython-313.pyc
+│   └── user.py
+├── requirements.txt
+├── schema.sql
+├── static
+│   └── style.css
+├── templates
+│   ├── index.html
+│   ├── login.html
+│   ├── navigation.html
+│   ├── purchase.html
+│   ├── search.html
+│   └── sell.html
+└── tests
+    ├── __pycache__
+    │   ├── __init__.cpython-313.pyc
+    │   ├── currency_converter.cpython-313.pyc
+    │   ├── test_CurrencyConversion.cpython-313-pytest-8.3.5.pyc
+    │   ├── test_fulfillment.cpython-313-pytest-8.3.5.pyc
+    │   ├── test_main.cpython-313-pytest-8.3.5.pyc
+    │   ├── test_purchase.cpython-313-pytest-8.3.5.pyc
+    │   ├── test_search.cpython-313-pytest-8.3.4.pyc
+    │   ├── test_search.cpython-313-pytest-8.3.5.pyc
+    │   └── test_sell.cpython-313-pytest-8.3.5.pyc
+    ├── currency_converter.py
+    ├── database.db
+    ├── test_CurrencyConversion.py
+    ├── test_fulfillment.py
+    ├── test_main.py
+    ├── test_purchase.py
+    ├── test_search.py
+    └── test_sell.py
+
+```
 
 # Project Plan  
 
