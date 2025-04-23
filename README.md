@@ -54,6 +54,23 @@ pytest
 pytest --cov=controllers --cov=main --cov=models --cov=jobs --cov-report=term-missing
 ```
 
+# Test Coverage Data 
+```
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+controllers/__init__.py       0      0   100%
+controllers/purchase.py      40      5    88%   60, 72-81
+controllers/search.py        20      0   100%
+controllers/sell.py          35      4    89%   62, 75-78
+jobs/fulfillment.py          19      1    95%   56
+main.py                      52      0   100%
+models/__init__.py            0      0   100%
+models/user.py               13      1    92%   10
+-------------------------------------------------------
+TOTAL                       179     11    94%
+```
+
+
 # Lessons Leaned From This Project 
 * ✅ **Be Ready for Surprises**: Some things took longer than we 
 thought like using outside tools or APIs. It’s important to 
@@ -74,7 +91,7 @@ problems quickly, and adjust our plan when needed.
 ## Overall usage of github
 - [Github Actions](https://github.com/marcusdashoff/ist-303-team-c/actions)
 - [Github Issue](https://github.com/marcusdashoff/ist-303-team-c/issues)
-- [Github Pull Requests](https://github.com/marcusdashoff/ist-303-team-c/pulls)
+- [Github Pull Requests](https://github.com/marcusdashoff/ist-303-team-c/pulls?q=is%3Apr+is%3Aclosed)
 
 ## Directory Structure
 ```
