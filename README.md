@@ -71,14 +71,14 @@ TOTAL                       179     11    94%
 ```
 
 
-# Lessons Leaned From This Project 
-* ✅ **Be Ready for Surprises**: Some things took longer than we 
+# Lessons Learned From This Project 
+* 😏 **Be Ready for Surprises**: Some things took longer than we 
 thought like using outside tools or APIs. It’s important to 
 leave extra time in case things don’t go as planned.
-* ✅ **Keep Code Organized**: Writing clean, separate pieces of 
+* 😏 **Keep Code Organized**: Writing clean, separate pieces of 
 code made it easier to test, fix problems, and add new 
 features later.
-* ✅ **Communicate Early and Often**: Checking in regularly as 
+* 😏 **Communicate Early and Often**: Checking in regularly as 
 a team helped us stay on the same page, solve
 problems quickly, and adjust our plan when needed.
 
@@ -170,8 +170,12 @@ problems quickly, and adjust our plan when needed.
 # Project Plan  
 
 ## Milestone 1
-Story 1 + Story 2 + Story 3
+Story 1 + Story 2 + Story 3 + Story 4 + Story 5 + Story 6
 
+### Iteration 1: 
+Story 1 + Story 2 + Story 3
+### Iteration 2: 
+Story 4 + Story 5 + Story 6
 
 ## 1. Project Kickoff (Basics V.1) - Chen  
 - **User DB Table Setup**  
